@@ -1,4 +1,4 @@
-# Hospiweb
+ # Hospiweb
 
 Hospiweb este o platformă online ce îți permite să iei legătura cu medicul tău oricând și oriunde, fie de la tine de acasă, fie de la muncă, parc sau din vacanță!
 
@@ -28,4 +28,4 @@ Pentru realizarea tuturor elementelor artistice prezente pe platformă (desene, 
 
 ## License
 
-Acest proiect este licențiat de GPL 3.0 - verifică [LICENSE.md](LICENSE.md) pentru detalii!
+Acest proiect este licențiat de GPL 3.0 - verifică [LICENSE](LICENSE) pentru detalii!
