@@ -28,4 +28,4 @@ Pentru realizarea tuturor elementelor artistice prezente pe platformă (desene, 
 
 ## License
 
-Acest proiect este licențiat de GPL 3.0 - verifică [LICENSE.md](LICENSE.md) pentru detalii!
+Acest proiect este licențiat de GPL 3.0 - verifică [LICENSE](LICENSE.md) pentru detalii!
