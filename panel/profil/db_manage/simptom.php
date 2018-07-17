@@ -4,7 +4,7 @@
 
 	if(isset($_POST['text_simp']) && !empty($_POST['text_simp']))
 	{
-		$textNeMurdar = mysqli_real_escape_string($connection, $_POST['text_simp']);
+		$textNeMurdar = filter_input(INPUT_POST, 'text_simp', FILTER_SANITIZE_STRING);
 		if(isset($_SESSION['id']))
 		{
 			$id = $_SESSION['id'];

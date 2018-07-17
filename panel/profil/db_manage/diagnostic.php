@@ -4,7 +4,7 @@
     
     if(isset($_POST['text_diag']) && !empty($_POST['text_diag']))
     {
-        $textCurat = mysqli_real_escape_string($connection, $_POST['text_diag']);
+        $textCurat = filter_input(INPUT_POST, 'text_diag', FILTER_SANITIZE_STRING);
         if(isset($_SESSION['utilizator_edit']))
         {
             $id = $_SESSION['utilizator_edit'];
