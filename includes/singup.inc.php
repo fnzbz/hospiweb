@@ -20,7 +20,7 @@ else if ($cnpsex == 2 || $cnpsex == 4 || $cnpsex == 6){
 else {
     $sex = 3;
 }
-$sange = $_POST['sange'];
+$sange = filter_input(INPUT_POST, 'sange', FILTER_SANITIZE_STRING);
 $agreement = $_POST['agreement'];
 
 $CNPAUX=$CNP;
