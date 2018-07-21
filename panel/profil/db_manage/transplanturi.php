@@ -21,7 +21,7 @@
 			$query = "UPDATE transplanturi_pacient SET medicName = '$medicName', priority = '$priority', mention = '$mention' WHERE accountID = '$id'";
 			mysqli_query($connection, $query);
 		}
-		header('Location: https://hospiweb.novacdan.ro/panel/profil/utilizator?id='.$id);
+		header('Location: https://hospiweb.novacdan.ro/panel/transplanturi');
 	}
 	else
 		header('Location: https://hospiweb.novacdan.ro/panel/profil/utilizator?id='.$id);
