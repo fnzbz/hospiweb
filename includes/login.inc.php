@@ -15,7 +15,16 @@ if (isset($_POST['CNP']) && !empty($_POST['CNP']) && isset($_POST['password']) &
     $result = mysqli_query($connection, $sql);
     $row = $result->fetch_assoc();
     $hash = $row['password'];
+    $siteKey = $_POST['g-recaptcha-response'];
+    $secretKey = "hospiwebeunsitesmecher";
+    $IP = $_SERVER['REMOTE_ADDR'];
     
+    $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$siteKey&remoteip=$IP";
+    $response = file_get_contents($url);
+    $response = json_decode($response);
+
+    if ($response->success) {
+        
     $check = password_verify($password, $hash);
     
     if ($check == 0) {
@@ -23,7 +32,7 @@ if (isset($_POST['CNP']) && !empty($_POST['CNP']) && isset($_POST['password']) &
         die();
         
     } else {
-        
+    
         $sql = "SELECT * FROM utilizatori WHERE CNP = '$CNP' AND password = '$hash'";
         $result = mysqli_query($connection, $sql);
         
@@ -46,6 +55,8 @@ if (isset($_POST['CNP']) && !empty($_POST['CNP']) && isset($_POST['password']) &
         header("Location: https://hospiweb.novacdan.ro/login");
         
     }
+    
+    } else header ('Location: https://hospiweb.novacdan.ro/login?eroare=captcha');
 
     }   else { header ('Location: https://hospiweb.novacdan.ro/login'); }
 } else {
