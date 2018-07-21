@@ -46,6 +46,7 @@ if (empty($_SESSION['key']))
                        <div class="cnp-form" id="cnp-group"><label>Cod numeric personal</label><input class="form-control" type="text" name="CNP" required="" maxlength="13" minlength="13" inputmode="numeric"></div>
                         <div class="form-group" id="password-group"><label>Parola</label><input type="password" required class="form-control" name="password" rel="password" /></div>
                         <input type="hidden" name="csrf" value="<?php echo $csrf ?>">
+                        <center><div class="g-recaptcha" data-sitekey="hospiwebeunsitesmecher"></div></center><br>
                         <div class="form-actions"><button class="btn btn-success" name="login" type="submit" style="font-size:13px;">Autentificare</button></div>
                     </form>
                 </div>
@@ -56,7 +57,10 @@ if (empty($_SESSION['key']))
                        echo '<div class="card-footer"><span id="spanError">Eroare: A intervenit o eroare, asigura-te ca ai introdus datele corect!</span></div>';
                    } else if (isset($_GET['actiune']) && $_GET['actiune']=='succes'){
                         echo'<div class="card-footer"><span id="spanSuccess">Succes: Contul a fost creat, acum te pot autentifica!</span></div>';
-                   } else {
+                   } else if (isset($_GET['eroare']) && $_GET['eroare']=='captcha'){
+                        echo'<div class="card-footer"><span id="spanError">Eroare: Protocolul Captcha nu a putut fi validat!</span></div>';
+                   }
+                   else {
                        echo '<div class="card-footer">
                     <p class="text-center mb-0 small">Mi-am uitat parola. <a href="/challenge">Trimite-mi un email de resetare!</a></p>
                     </div>';
@@ -69,6 +73,7 @@ if (empty($_SESSION['key']))
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bootstrap-better-nav.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </body>
 
 </html>
