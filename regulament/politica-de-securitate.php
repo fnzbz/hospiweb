@@ -72,7 +72,12 @@
                             <i class="fa fa-user-md">&nbsp;
                             </i>
                             <span>Doctori</span>
-                        </a>                         
+                        </a>
+                        <a class="dropdown-item" href="https://hospiweb.novacdan.ro/panel/ticket/list">
+                            <i class="fa fa-ticket">&nbsp;
+                            </i>
+                            <span>Tichete</span>
+                        </a>                      
                         <a class="dropdown-item" style="color:red" href="https://hospiweb.novacdan.ro/panel/transplanturi">
                             <i class="fa fa-heart">&nbsp;
                             </i>

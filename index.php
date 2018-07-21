@@ -73,8 +73,28 @@ session_start();
                         <a class="dropdown-item" href="https://hospiweb.novacdan.ro/panel/profil/eu">
                             <i class="fa fa-user">&nbsp;
                             </i>
-                            <span>Panou Utilizator</span>
+                            <span>Profilul meu</span>
                         </a>
+                        <a class="dropdown-item" href="https://hospiweb.novacdan.ro/panel/pacienti">
+                            <i class="fa fa-users">&nbsp;
+                            </i>
+                            <span>Pacienti</span>
+                        </a> 
+                        <a class="dropdown-item" href="https://hospiweb.novacdan.ro/panel/doctori">
+                            <i class="fa fa-user-md">&nbsp;
+                            </i>
+                            <span>Doctori</span>
+                        </a>
+                        <a class="dropdown-item" href="https://hospiweb.novacdan.ro/panel/ticket/list">
+                            <i class="fa fa-ticket">&nbsp;
+                            </i>
+                            <span>Tichete</span>
+                        </a>                      
+                        <a class="dropdown-item" style="color:red" href="https://hospiweb.novacdan.ro/panel/transplanturi">
+                            <i class="fa fa-heart">&nbsp;
+                            </i>
+                            <span>Transplanturi</span>
+                        </a>  
                         <div class="dropdown-divider"></div>
                         <form action="https://hospiweb.novacdan.ro/includes/logout.inc.php" method="POST">
                         <button class="btn dropdown-item" type="submit" name="logout"><i class="fa fa-unlock">&nbsp;</i>Deloghează-te</button>

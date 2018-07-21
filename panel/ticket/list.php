@@ -19,11 +19,11 @@ else {
 }
 
  if ($s_medic == 0) {
-  $sqlTickets = "SELECT * FROM tickets WHERE accountID ='$s_id' ORDER BY id DESC" ;
+  $sqlTickets = "SELECT * FROM tickets WHERE accountID ='$s_id' ORDER BY status DESC, id DESC, urgenta DESC" ;
   $resultTickets = $connection->query($sqlTickets);
  }
  else if ($s_medic == 1) {
-     $sqlTickets = "SELECT * FROM tickets ORDER BY id DESC" ;
+     $sqlTickets = "SELECT * FROM tickets ORDER BY status DESC, id DESC, urgenta DESC" ;
      $resultTickets = $connection->query($sqlTickets);  
  }
 
