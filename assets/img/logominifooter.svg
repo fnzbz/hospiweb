@@ -62,9 +62,10 @@
       }
 
       .cls-7 {
-        font-size: 50px;
+        font-size: 42px;
         fill: #fff;
-        font-family: Pixel;
+        font-family: Arial;
+        font-weight: bold;
       }
     </style>
   </defs>
@@ -75,5 +76,5 @@
   <path class="cls-5" d="M63,22.68h7.36V15h8.28v7.68H86v8.64H78.64V39H70.36V31.32H63V22.68Z"/>
   <path class="cls-6" d="M71,198L127.789,77,143,121Z"/>
   <rect x="2" y="122" width="142" height="31"/>
-  <text id="hospiweb" class="cls-7" transform="translate(8.472 147.02) scale(0.546 0.553)">hospiweb</text>
+  <text id="hospiweb" class="cls-7" transform="translate(8.472 147.02) scale(0.546 0.553)">HOSPIWEB</text>
 </svg>

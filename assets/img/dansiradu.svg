@@ -55,8 +55,9 @@
       }
 
       .cls-13, .cls-7, .cls-8 {
-        font-size: 12px;
-        font-family: Pixel;
+        font-size: 10px;
+        font-family: Arial;
+        font-weight: bold;
       }
 
       .cls-7 {
@@ -83,7 +84,7 @@
   <path class="cls-1" d="M52.95,49h76.883V82H52.95V49Z"/>
   <path id="Rectangle_1_copy" data-name="Rectangle 1 copy" class="cls-5" d="M52.95,72h76.883V82H52.95V72Z"/>
   <path class="cls-6" d="M48.2,195L20,163H164.01L133.8,195H48.2Z"/>
-  <text id="_radu" data-name="#radu" class="cls-7" transform="translate(47.518 187.701) scale(2.068 2.071)">#radu</text>
+  <text id="_radu" data-name="#radu" class="cls-7" transform="translate(47.518 187.701) scale(2.068 2.071)">#RADU</text>
   <text id="_" data-name="&lt;/&gt;" class="cls-8" transform="translate(77.328 66.553) scale(1.412 1.414)">&lt;/&gt;</text>
   <path class="cls-9" d="M124,163.62L140.343,118h38.814l17.364,23.8L212.864,118h38.815L267,162.628,195.5,238Z"/>
   <path class="cls-10" d="M195,238l56-119,15,43.273Z"/>
@@ -92,7 +93,7 @@
   <rect class="cls-11" x="157" y="49" width="77" height="33"/>
   <rect id="Rectangle_1_copy-2" data-name="Rectangle 1 copy" class="cls-12" x="157" y="72" width="77" height="10"/>
   <path class="cls-6" d="M152.6,195.023L122.2,162.88,268.233,163,239.4,195.1Z"/>
-  <text id="_dan" data-name="#dan" class="cls-7" transform="translate(160.573 187.701) scale(2.071)">#dan</text>
+  <text id="_dan" data-name="#dan" class="cls-7" transform="translate(160.573 187.701) scale(2.071)">#DAN</text>
   <text id="_2" data-name="&lt;/&gt;" class="cls-13" transform="translate(181.416 66.553) scale(1.414)">&lt;/&gt;</text>
   <path id="Polygon_2" data-name="Polygon 2" class="cls-14" d="M25.911,234.863l8.835,14.921L23.286,262.8,7.368,255.918l1.623-17.263Z"/>
   <rect class="cls-15" x="33" y="249" width="108" height="1"/>
