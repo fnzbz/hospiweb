@@ -24,7 +24,7 @@ Pentru realizarea tuturor elementelor artistice prezente pe platformă (desene, 
 ## Creatori
 
 * **Novac Dan Andrei** - *Fondator* 
-* **Vrînceanu Radu Tudor** - *Fondator* 
+* **Vrînceanu Radu Tudor** - *Co-Fondator* 
 
 ## License
 
