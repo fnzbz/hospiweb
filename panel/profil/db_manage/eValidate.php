@@ -3,7 +3,7 @@
 	require '../../../includes/functionEmail.php';
 	session_start();
     
-    if(!empty($_POST['email_change']) && isset($_POST['email_change']) && filter_var($_POST['email_change'], FILTER_VALIDATE_EMAIL) && isset($_SESSION['CNP']))
+    if(!empty($_POST['email_change']) && isset($_POST['email_change']) && isset($_SESSION['CNP']))
     {	
     	$id = $_SESSION['id'];
 
@@ -22,9 +22,9 @@
         	if($confirmedEmail)
         		$sendTo = $currentMail;
         	else
-        		$sendTo = $_POST['email_change'];
+        		$sendTo = filter_var($_POST['email_change'], FILTER_VALIDATE_EMAIL);
     
-        	$new_email = filter_var($_POST['email_change'], FILTER_SANITIZE_EMAIL);
+        	$new_email = $sendTo;
     
     
         	$sqlSelect = "SELECT id FROM email_confirm WHERE accountID = '$id' LIMIT 1";

@@ -22,11 +22,101 @@ body {
   font-size:14px;
 }
 
+.avatar {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.avatar + label {
+    max-width: 80%;
+    font-size: 1rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 0.5rem 0.8rem;
+}
+
+.no-js .avatar + label {
+    display: none;
+}
+
+.avatar:focus + label,
+.avatar.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.avatar + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    /* 4px */
+    margin-right: 0.25em;
+    /* 4px */
+}
+
+
+/* style 1 */
+
+.avatar-button + label {
+    color: #fff;
+    background-color: #17A2B8;
+}
+
+.avatar-button:focus + label,
+.avatar-button.has-focus + label,
+.avatar-button + label:hover {
+    background-color: #138496;
+}
+
+.profile-overlay {
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  height:100%;
+  width:100%;
+  opacity:0;
+  transition:.4s ease;
+  background-color:rgba(255,255,255,0.4);
+}
+
+.poza-profil:hover .profile-overlay {
+  opacity:1;
+}
+
+.change-icon {
+  position:absolute;
+  color:rgba(88,88,88,.95);
+  font-size:60px;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  -ms-transform:translate(-50%, -50%);
+  text-align:center;
+}
+
+.change-icon:hover {
+    color: #17A2B8;
+}
+
+
 .sticky {
   position:sticky;
   top:0px;
   z-index:2;
 }
+
 
 .notification {
     font-size:13px;
@@ -219,6 +309,13 @@ footer {
 .main-footer img {
   width:70px;
   margin-right:3px;
+}
+
+.avatar-fluid {
+    height: auto; 
+    width: auto; 
+    max-width: 100%; 
+    max-height: 300px;
 }
 
 .footer-links {

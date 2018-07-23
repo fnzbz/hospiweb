@@ -33,12 +33,18 @@ $result = $connection->query($sql);
     $varsta = floor((time() - $s_nascut) / 31556926);
         
     }
-}  
+}
+
+$select_avatar = "SELECT * FROM avatars WHERE accountID='$id'";
+$result_avatar = $connection->query($select_avatar);
+    if($row_avatar = $result_avatar->fetch_assoc()) {
+        $avatarName = $row_avatar['avatarName'];
+    }
 
 if ($s_medic!=1){
                             
      $select_aditional_pacient = "SELECT * FROM aditional_pacient WHERE accountID='$id'";
-    $result_aditional_pacient = $connection->query($select_aditional_pacient);
+     $result_aditional_pacient = $connection->query($select_aditional_pacient);
         if($row = $result_aditional_pacient->fetch_assoc()) {
             $limbasec = $row['limbasec'];
             $greutate = $row['greutate'];
@@ -190,19 +196,30 @@ else if ($s_medic!=0){
             <div class="row">
                 <div class="col-xl-3 col-lg-4">
                     <div class="card faq-left">
-                        <?php if ($s_sex == '1' && $s_medic != '0')
-                        echo'
-                        <div class="poza-profil"><img src="../../regulament/assets/img/profil-doctor.png" class="img-fluid"></div>';
-                              else if($s_sex == '2' && $s_medic != '0')
-                        echo'<div class="poza-profil"><img src="../../regulament/assets/img/profil-doctor-girl.png" class="img-fluid"></div>';
-                              else if ($s_sex == '1' && $s_medic == '0')
-                        echo'<div class="poza-profil"><img src="../../regulament/assets/img/profil-boy.png" class="img-fluid"></div>';
-                              else if ($s_sex == '2' && $s_medic == '0')
-                        echo'<div class="poza-profil"><img src="../../regulament/assets/img/profil-girl.png" class="img-fluid"></div>';
+                        <div class="poza-profil">
+                        <?php 
+                       if ($result_avatar->num_rows > 0) {
+  
+                       echo'<img class="avatar-fluid" src="uploads/avatars/'.$avatarName.'">';
+   
+                       } else {
+                        
+                        if ($s_sex == 1 && $s_medic != 0)
+                        echo'<img src="../../regulament/assets/img/profil-doctor.png" class="avatar-fluid">';
+                              else if($s_sex == 2 && $s_medic != 0)
+                        echo'<img src="../../regulament/assets/img/profil-doctor-girl.png" class="avatar-fluid">';
+                              else if ($s_sex == 1 && $s_medic == 0)
+                        echo'<img src="../../regulament/assets/img/profil-boy.png" class="avatar-fluid">';
+                              else if ($s_sex == 2 && $s_medic == 0)
+                        echo'<img src="../../regulament/assets/img/profil-girl.png" class="avatar-fluid">';
                               else 
-                        echo'<div class="poza-profil"><img src="../../regulament/assets/img/no.png" class="img-fluid"></div>';
-                              
-                              ?>
+                        echo'<img src="../../regulament/assets/img/no.png" class="avatar-fluid">'; 
+                        
+                       }
+                        
+                        ?>
+                        <div class="profile-overlay"><button style=" box-shadow:none; background-color:transparent;" data-toggle="modal" data-target="#modalChangeAvatar" class="btn change-icon"><i class="fa fa-camera"></i></button></div>
+                        </div>
                         <div class="card-block">
                             <?php echo'<h5 class="text-center">' .$s_utilizator;echo'</h5>' ?>
                         <?php
@@ -462,9 +479,26 @@ else if ($s_medic!=0){
                                                                              $idPacient = $rowPcs['pacientID'];
                                                                              $namePacient = $rowPcs['namePacient'];
                                                                              $datePacient = $rowPcs['date'];
+                                                                             $sqlStare = "SELECT stare FROM utilizatori WHERE id='$idPacient'";
+                                                                             $resultStare = $connection->query($sqlStare);
+                                                                             if ($rowStare = $resultStare->fetch_assoc()) {
+                                                                                 $starePacient = $rowStare['stare'];
+                                                                             }
                                                                             echo '<tr>
                                                                                     <td><a href="https://hospiweb.novacdan.ro/panel/profil/utilizator?id='.$idPacient.'">'.$namePacient.'</a></td>
-                                                                                    <td><span>'.date("d-m-Y H:i", $datePacient).'</span></td>
+                                                                                    <td>';                        
+                                                                                    switch($starePacient){
+                                                                                        case 0: echo'<h6 class="text-center"><span class="label" style="background-color:#000; color: #fff"><i class="fa fa-close"></i>&nbsp;Decedat</span></h6>';
+                                                                                        break;
+                                                                                        case 1: echo'<h6 class="text-center"><span class="label bg-turcoaz"><i class="fa fa-user"></i>&nbsp;Sanatos</span></h6>';
+                                                                                        break;
+                                                                                        case 2: echo'<h6 class="text-center"><span class="label bg-yellow"><i class="fa fa-heart"></i>&nbsp;Bolnav</span></h6>';
+                                                                                        break;
+                                                                                        case 3: echo'<h6 class="text-center"><span class="label bg-red"><i class="fa fa-warning"></i>&nbsp;Grav bolnav</span></h6>';
+                                                                                        break;
+                                                                                        default: echo'';
+                                                                                    } echo'
+                                                                                    </td>
                                                                                     <td><form action="db_manage/requests.php" method="POST"><button class="btn float-right" value="'.$idReq.'" name="removePacient" type="submit" style="color:#fff; box-shadow:none; background-color:transparent;"><i class="fa fa-trash" style="font-size:13px;"></i></button></form></td>
                                                                                   </tr>'; }
                                                                         } else echo'<tr><td><span>Nu au fost gasiti pacienti</span></td><td></td><td></td></tr>';
@@ -883,7 +917,7 @@ else if ($s_medic!=0){
             </div>
             <div class="modal-body">
                 <h6>Introducere valori tensiune:</h6>
-                <form action="db_manage/chart.php" method="POST" id="insert_form_simp">
+                <form action="db_manage/chart.php" method="POST">
                     <div class="form-group">
                 	<h6>Introdu valoarea minimă (diastola):</h6>
                         <input class="form-control" type="text" name="diastola" required=""  inputmode="numeric">
@@ -899,6 +933,31 @@ else if ($s_medic!=0){
             </div>
             <div class="modal-footer"><button class="btn btn-info" type="submit">Salvează</button></form>
             <button class="btn btn-danger" data-toggle="modal" data-target="#modalEditChart">Închide</button></div>
+        </div>
+    </div>
+</div>
+<div id="modalChangeAvatar" role="dialog" tabindex="-1" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Schimbă avatarul</h4>
+            </div>
+            <div class="modal-body">
+                    <div class="form-group">
+                        <form action="db_manage/profile-upload.php" method="POST" enctype="multipart/form-data">
+                        <input class="avatar avatar-button" id="photo-button" type="file" name="photo">
+                        <label for="photo-button"><i class="fa fa-upload"></i>&nbsp;&nbsp;<span>Încarcă-ți poza de profil</span></label><br>
+                        <button class="btn btn-danger" data-toggle="modal" type="submit" name="delete-image"><i class="fa fa-remove"></i>&nbsp;&nbsp;Șterge poza de profil</button>
+                        
+                    </div>
+                    <div style="font-size:13px;">
+                        <p><strong>Fișiere acceptate:</strong><em>.jpg .jpeg .png</em></p>
+                        <p>Mărime maximă acceptată:<em>2mb</em></p>
+                        <p>Dimensiune recomandată:<em>500px x 500px</em></p>
+                    </div>
+            </div>
+            <div class="modal-footer"><button name="upload-image" class="btn btn-success" type="submit">Salvează</button></form>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#modalChangeAvatar">Închide</button></div>
         </div>
     </div>
 </div>
@@ -936,6 +995,7 @@ else if ($s_medic!=0){
 
     <script src="https://hospiweb.novacdan.ro/panel/profil/js/Chart.min.js"></script>
     <script src="https://hospiweb.novacdan.ro/panel/profil/js/chart_app.js"></script>
+    <script src="https://hospiweb.novacdan.ro/panel/profil/js/upload-button.js"></script>
     <script src= "https://hospiweb.novacdan.ro/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://hospiweb.novacdan.ro/assets/js/bootstrap-better-nav.js"></script>
     <script type="text/javascript">

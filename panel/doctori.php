@@ -37,8 +37,10 @@ else {
     <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
     <style type="text/css">
         .image-medic-list-fluid{
-            max-width: 70%;
+            width: auto;
             height: auto;
+            max-width: 200px;
+            max-height: 200px;
             border-radius: 50%;
         }
 
@@ -109,6 +111,12 @@ else {
             $constructor = "SELECT * FROM aditional_medic WHERE accountID = '$id'";
             $resultConst = $connection->query($constructor);
             $medic_rows = $resultConst->fetch_assoc();
+            
+            $select_avatar = "SELECT * FROM avatars WHERE accountID='$id'";
+            $result_avatar = $connection->query($select_avatar);
+                if($row_avatar = $result_avatar->fetch_assoc()) {
+                    $avatarName = $row_avatar['avatarName'];
+                }               
                 
             $p_specializare = $medic_rows['specializare'];
             $p_cabinet = $medic_rows['cabinet'];
@@ -122,7 +130,7 @@ else {
             $p_limbasec = ($p_limbasec == '') ? ('Nu cunosc') : ($medic_rows['limbasec']);
             $p_cabinet = ($p_cabinet == '') ? ('Nu a fost setata') : ($medic_rows['cabinet']);
             
-        if($medic!='1'){
+        if($medic!=1){
             echo'';
         }
           else {
@@ -132,10 +140,14 @@ else {
                         <div class="row">
                             <div class="col-lg-3 col-xl-3">
                                 <div class="poza-profil">';
+                               if ($result_avatar->num_rows > 0) {
+                               echo'<img class="image-medic-list-fluid" src="profil/uploads/avatars/'.$avatarName.'">';
+                               } else {                                
                                 if ($sex == 1){echo'
                                 <img src="../regulament/assets/img/profil-doctor.png" class="image-medic-list-fluid" />';}
                                 else if ($sex == 2){echo'
                                 <img src="../regulament/assets/img/profil-doctor-girl.png" class="image-medic-list-fluid" />';}
+                               }
                                 echo'
                                 </div>
                                 <div class="text-center">

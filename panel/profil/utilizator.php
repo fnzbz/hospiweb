@@ -110,6 +110,12 @@ else {
         } else
             $relation = false;        
     }
+    
+    $select_avatar = "SELECT * FROM avatars WHERE accountID='$id'";
+    $result_avatar = $connection->query($select_avatar);
+        if($row_avatar = $result_avatar->fetch_assoc()) {
+            $avatarName = $row_avatar['avatarName'];
+        }    
 ?>
 <html>
 
@@ -147,7 +153,8 @@ else {
     <section class="bunvenit">
         <div class="container">
             <div class="alert alert-light" role="alert">
-               <?php echo '<h5><span>Vizualizezi profilul lui'; if ($medic == 1) echo ' Dr. '; echo ' '.$utilizator;echo'!</span></h5>'; 
+               <?php echo '<h5><span>Vizualizezi profilul lui'; if ($medic == 1) echo ' Dr. '; echo ' '.$utilizator;echo'!</span></h5>';
+               if ($s_isMod == 1 && $relation == false) { echo '<p style="color:green; font-size: 13px">INFO: Poti vizualiza datele personale deoarece esti moderator!</p>'; }
                if ($s_medic == 1 && $relation == true) {
                     echo '<span style="font-size:13px; color: #17A2B8">INFO: Acesta este unul dintre pacienții dumneavoastră!</span>';}
                else if ($s_medic == 0 && $relation == true) {
@@ -162,19 +169,28 @@ else {
             <div class="row">
                 <div class="col-xl-3 col-lg-4">
                     <div class="card faq-left">
-                        <?php if ($sex == '1' && $medic != '0')
+                        <div class="poza-profil">
+                        <?php 
+                       if ($result_avatar->num_rows > 0) {
+  
+                       echo'<img class="avatar-fluid" src="uploads/avatars/'.$avatarName.'">';
+   
+                       } else {
+                        if ($sex == 1 && $medic != 0)
                         echo'
-                        <div class="poza-profil"><img src="../../regulament/assets/img/profil-doctor.png" class="img-fluid"></div>';
-                              else if($sex == '2' && $medic != '0')
-                        echo'<div class="poza-profil"><img src="../../regulament/assets/img/profil-doctor-girl.png" class="img-fluid"></div>';
-                              else if ($sex == '1' &&  $medic == '0')
-                        echo'<div class="poza-profil"><img src="../../regulament/assets/img/profil-boy.png" class="img-fluid"></div>';
-                              else if ($sex == '2' &&  $medic == '0')
-                        echo'<div class="poza-profil"><img src="../../regulament/assets/img/profil-girl.png" class="img-fluid"></div>';
+                        <img class="avatar-fluid" src="../../regulament/assets/img/profil-doctor.png">';
+                              else if($sex == 2 && $medic != 0)
+                        echo'<img class="avatar-fluid" src="../../regulament/assets/img/profil-doctor-girl.png">';
+                              else if ($sex == 1 &&  $medic == 0)
+                        echo'<img class="avatar-fluid" src="../../regulament/assets/img/profil-boy.png">';
+                              else if ($sex == 2 &&  $medic == 0)
+                        echo'<img class="avatar-fluid" src="../../regulament/assets/img/profil-girl.png">';
                               else 
-                        echo'<div class="poza-profil"><img src="../../regulament/assets/img/no.png" class="img-fluid"></div>';
+                        echo'<img class="avatar-fluid" src="../../regulament/assets/img/no.png">';
+                       }
                               
                               ?>
+                        </div>
                         <div class="card-block">
                             <?php echo'<h5 class="text-center">' .$utilizator;echo'</h5>' ?>
                         <?php

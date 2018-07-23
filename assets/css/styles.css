@@ -34,6 +34,15 @@ body {
   }
 }
 
+@font-face {
+    font-family: 'pixelregular';
+    src: url('../fonts/pixel-webfont.woff2') format('woff2'),
+         url('../fonts/pixel-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .containercustom {
   display:table-cell;
   text-align:center;

@@ -42,6 +42,12 @@ session_start();
                         $idHeader = $_SESSION['id'];
                         $queryHEADER = "SELECT * FROM utilizatori WHERE id = '$idHeader'";
                         
+                        $select_header_avatar = "SELECT * FROM avatars WHERE accountID='$idHeader'";
+                        $result_header_avatar = $connection->query($select_header_avatar);
+                            if($row_header_avatar = $result_header_avatar->fetch_assoc()) {
+                                $avatarNameHeader = $row_header_avatar['avatarName'];
+                            }
+                        
                         $resultHEADER = $connection->query($queryHEADER);
                         $rows_fetchHEADER = $resultHEADER->fetch_assoc();
                         
@@ -52,21 +58,28 @@ session_start();
                     echo'<ul class="profile-nav ml-auto">
                     <div class="dropdown profile">
                         <a class="dropdown-toggle" id="dropdownMenuLink" role="button" aria-expanded="true" aria-haspopup="true" href="#" data-toggle="dropdown">';
-                        if ($sexHeader == '1' && $isMedicHeader != '0') { echo'
+                        if ($result_header_avatar->num_rows > 0) {
+                        echo'
+                        <img alt="profile-avatar" src="https://hospiweb.novacdan.ro/panel/profil/uploads/avatars/'.$avatarNameHeader.'">
+                        <span>'; if($isMedicHeader == 1) { echo 'Dr. &nbsp;'; } echo $utilizatorHeader; echo'</span>';
+                        } else {                        
+                        if ($sexHeader == 1 && $isMedicHeader != 0) { echo'
                         <img alt="profile-avatar" src="https://hospiweb.novacdan.ro/assets/img/mini-man-doctor.png">
                         <span id="name"> Dr. &nbsp;' .$utilizatorHeader; echo'</span>';}
-                        else if ($sexHeader == '2' && $isMedicHeader != '0') { echo'
+                        else if ($sexHeader == 2 && $isMedicHeader != 0) { echo'
                         <img alt="profile-avatar" src="https://hospiweb.novacdan.ro/assets/img/mini-women-doctor.png">
                         <span id="name"> Dr. &nbsp;' .$utilizatorHeader; echo'</span>';} 
-                        else if ($sexHeader == '1' && $isMedicHeader == '0') { echo'
+                        else if ($sexHeader == 1 && $isMedicHeader == 0) { echo'
                         <img alt="profile-avatar" src="https://hospiweb.novacdan.ro/assets/img/mini-man.png">
                         <span id="name">'.$utilizatorHeader; echo'</span>';}                        
-                        else if ($sexHeader == '2' && $isMedicHeader == '0') { echo'
+                        else if ($sexHeader == 2 && $isMedicHeader == 0) { echo'
                         <img alt="profile-avatar" src="https://hospiweb.novacdan.ro/assets/img/mini-women.png">
                         <span id="name">' .$utilizatorHeader; echo'</span>';}
                         else { echo'
                         <img alt="profile-avatar" src="https://hospiweb.novacdan.ro/assets/img/mini-unisex.png">
                         <span id="name">' .$utilizatorHeader; echo'</span>';}
+                        }
+                         
                          echo '
                         </a>
                     <div class="dropdown-menu dropdown-menu-right snow" aria-labelledby="dropdownMenuLink">
