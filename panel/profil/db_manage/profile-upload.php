@@ -35,7 +35,7 @@ if (isset($_SESSION['CNP'])) {
             		mysqli_query($connection, $queryUPDATE);           		    
             		header("Location: " . $_SERVER["HTTP_REFERER"]);
         		    } else {
-        		    echo 'Fotografia nu a fost gasita ca sa poata fi stearsa';       
+        		    header('Location: https://hospiweb.novacdan.ro/panel/profil/eu?avatar=negasit');       
         		    }
         		} else {
             		$queryINSERT = "INSERT INTO avatars (accountID, avatarName) VALUES ('$photoID', '$photoNameNew')";
@@ -43,13 +43,13 @@ if (isset($_SESSION['CNP'])) {
     			    header("Location: " . $_SERVER["HTTP_REFERER"]);
         		}
             } else {
-                echo "Fotografia depaseste 2mb, latimea este mai mare ca si inaltimea sau este prea mica in inaltime (dimensiune minima: 250px)";
+                header('Location: https://hospiweb.novacdan.ro/panel/profil/eu?avatar=dimensiune');
             }
         } else {
-            echo "S-a produs o eroare in uploadarea pozei";
+            header('Location: https://hospiweb.novacdan.ro/panel/profil/eu?avatar=eroare');
         }
     } else {
-        echo "Fisierul nu are extensia potrivita ('$photoActualExtension')";
+        header('Location: https://hospiweb.novacdan.ro/panel/profil/eu?avatar=extensie');
     }
 
     } else if (isset($_POST['delete-image'])){
@@ -58,17 +58,17 @@ if (isset($_SESSION['CNP'])) {
                     $actualAvatar = $row['avatarName'];
                 } 
     		    if(unlink('../uploads/avatars/'.$actualAvatar)) {
-        		$queryDELETE = "DELETE FROM avatars WHERE accountID = '$photoID'";
-			    mysqli_query($connection, $queryDELETE);  
-			    header("Location: " . $_SERVER["HTTP_REFERER"]);
+            		$queryDELETE = "DELETE FROM avatars WHERE accountID = '$photoID'";
+    			    mysqli_query($connection, $queryDELETE);  
+    			    header("Location: " . $_SERVER["HTTP_REFERER"]);
     		    } else {
-    		    echo 'Fotografia nu a fost gasita ca sa fie stearsa';       
+    		        header('Location: https://hospiweb.novacdan.ro/panel/profil/eu?avatar=negasit');  
     		    }
     		} else {
-        		echo 'Fotografia nu a fost stearsa (Delete Button)';       		    
+        		header('Location: https://hospiweb.novacdan.ro/panel/profil/eu?avatar=negasit');     		    
     		}        
-    } else header('Location: https://google.ro');  
-} else header('Location: https://google.ro');
+    } else header("Location: " . $_SERVER["HTTP_REFERER"]);  
+} else header("Location: " . $_SERVER["HTTP_REFERER"]);
 
 
 ?>
