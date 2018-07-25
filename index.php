@@ -5,8 +5,18 @@ session_start();
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+    <meta name="description" content="Hospiweb este o platformă online ce îți permite să iei legătura cu medicul tău oricând și oriunde, fie de la tine de acasă, fie de la muncă, parc sau din vacanță!"/>
+    <link rel="canonical" href="https://hospiweb.novacdan.ro/"/>
+    <meta property="og:locale" content="ro_RO"/>
+    <meta property="og:locale:alternate" content="en_US"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Platforma Medicala Online Romania - Hospiweb"/>
+    <meta property="og:description" content="Hospiweb este o platformă online ce îți permite să iei legătura cu medicul tău oricând și oriunde, fie de la tine de acasă, fie de la muncă, parc sau din vacanță!"/>
+    <meta property="og:url" content="https://hospiweb.novacdan.ro/"/>
+    <meta property="og:site_name" content="Hospiweb"/>
     <title>Hospiweb | Home</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
