@@ -227,6 +227,14 @@ a {
   min-height:100%;
 }
 
+.numeMyDoctor a {
+    color: #8870c9;
+}
+
+.numeMyDoctor a:hover {
+    color: #8870c9;
+}
+
 
 .margine {
   padding-top:70px;

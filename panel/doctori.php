@@ -9,9 +9,10 @@ if (!isset($_SESSION['CNP'])){
     }
 else {
     $s_cnp = $_SESSION['CNP'];
-    $sqlMe = "SELECT utilizator, CNP, isMedic FROM utilizatori WHERE CNP='$s_cnp'";
+    $sqlMe = "SELECT id, utilizator, CNP, isMedic FROM utilizatori WHERE CNP='$s_cnp'";
     $resultMe = $connection->query($sqlMe);
         if($rowMe = $resultMe->fetch_assoc()) {
+        $s_id = $rowMe['id'];
         $s_utilizator = $rowMe['utilizator'];
         $s_CNP = $rowMe['CNP'];
         $s_medic = $rowMe['isMedic'];
@@ -108,6 +109,14 @@ else {
             $id = $row['id']; 
             $judet = $row['judet'];
             
+            $sqlPacients = "SELECT * FROM medicperm WHERE isAcc=1 AND medicID = '$id' AND pacientID = '$s_id'" ;
+            $resultPacients = $connection->query($sqlPacients);  
+            if ($resultPacients->num_rows > 0) {
+                $relation = true;
+            } else {
+                $relation = false;
+            }
+            
             $constructor = "SELECT * FROM aditional_medic WHERE accountID = '$id'";
             $resultConst = $connection->query($constructor);
             $medic_rows = $resultConst->fetch_assoc();
@@ -157,7 +166,7 @@ else {
                                     }
                                     echo''.$p_pret.'</h6>
                                     <h6><span class="label bg-purple"><i class="fa fa-graduation-cap"></i>'.$p_specializare.'</span></h6>';
-                                if ($s_medic == 0) { echo '   
+                                if ($s_medic == 0 && $relation == false) { echo '   
                                     <button class="btn btn-light" type="button" data-toggle="modal" data-target="#selectDoctor'.$id.'">Selecteaza</button>
                                     <div id="selectDoctor'.$id.'" role="dialog" tabindex="-1" class="modal fade">
                                     <div class="modal-dialog" role="document">
@@ -177,6 +186,26 @@ else {
                                         </div>
                                     </div>
                                 </div>';
+                                } else if ($s_medic == 0 && $relation == true) { echo '   
+                                    <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#deleteDoctor'.$id.'">Deselecteaza</button>
+                                    <div id="deleteDoctor'.$id.'" role="dialog" tabindex="-1" class="modal fade">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Vrei să continui?</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Această acțiune va înlătura permisiunile doctorului <br>'.$utilizator.' ce le are asupra ta!</p><p style="color: #8870c9">Acesta nu va mai putea să-ți vizualizeze datele personale!</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                            	<form action="profil/db_manage/sendDoctorDel.php" method="POST">
+                                            	<button class="btn btn-success" name="submitDoctorDel" value="'.$id.'" type="submit" data-toggle="modal" data-target="#deleteDoctor'.$id.'">Continuă</button>
+                                            	</form>
+                                            	<button class="btn btn-danger" data-toggle="modal" data-target="#deleteDoctor'.$id.'">Întoarce-te</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>';
                                 }
                                 echo '
                                 </div>
@@ -186,9 +215,9 @@ else {
                               if ($s_CNP == $cnp) { echo'
                                 <h4><a class="numeDoctor" href="https://hospiweb.novacdan.ro/panel/profil/eu">Dr. '.$utilizator.'</a></h4>';}
                               else { echo'
-                                <h4><a class="numeDoctor" href="https://hospiweb.novacdan.ro/panel/profil/utilizator?id='.$id.'">Dr. '.$utilizator.'</a></h4>';}  
+                                <h4'; if ($relation == true) { echo ' class="numeMyDoctor"'; } echo '><a class="numeDoctor" href="https://hospiweb.novacdan.ro/panel/profil/utilizator?id='.$id.'">Dr. '.$utilizator.'</a></h4>';}  
                               
-                                echo'<div class="sectiune"><label class="labela" style="font-size:15px">Despre medic:</label>
+                                echo'<div class="sectiune"><label class="labela" style="font-size:15px;'; if ($relation == true) {echo' color: #8870c9'; }echo '">Despre medic:</label>
                                     <p>Judet: '.$judet.'<br /><span class="telDoctor">Telefon: '.$telefon.'</span><br />Ultima autentificare: '.$lastLogin.' <br />Mail: '.$mail.'<br />Limbă secundară vorbită: '; 
                                                             switch($p_limbasec){
                                                                 case 1: echo 'Nu cunosc';
@@ -210,7 +239,7 @@ else {
                                                                 default: echo 'Nu a fost setat';
                                                             } echo'<br /></p>
                                 </div>
-                                <div class="sectiune"><label class="labela" style="font-size:15px">Despre consultații:</label>
+                                <div class="sectiune"><label class="labela" style="font-size:15px;'; if ($relation == true) {echo' color: #8870c9'; }echo '">Despre consultații:</label>
                                     <p><strong>Program: ';                                   
                                     echo''.$p_program.'</strong><br /><strong>Adresă: ';
                                     echo ''.$p_cabinet.'</strong><br /></p>
