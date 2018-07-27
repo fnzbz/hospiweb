@@ -1,5 +1,7 @@
 <?php 
-session_start();
+if(!isset($_SESSION)) {
+     session_start();
+}
 if (!isset($_SESSION['CNP'])){ echo'
 <ul class="nav navbar-nav ml-auto">
     <li class="nav-item" role="presentation"><a class="nav-link active" href="https://hospiweb.novacdan.ro/login">Autentificare</a></li>
