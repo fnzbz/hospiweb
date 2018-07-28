@@ -3,13 +3,16 @@
 	session_start();
 	require 'db.php';
 
-	if(isset($_SESSION['whichAccount_Delete']) && $_SESSION['isMedic'] == 1 && isset($_POST['submitDelAcc']))
+	if(isset($_SESSION['whichAccount_Delete']) && ($_SESSION['isMedic'] == 1 || $_SESSION['isMod'] == 1) && isset($_POST['submitDelAcc']))
 	{
 		$id = $_SESSION['whichAccount_Delete'];
 		if (is_numeric($id)){
 		$result = $connection->query("SELECT * FROM utilizatori WHERE id = '$id'");
 		$resultAvatar = $connection->query("SELECT * FROM avatars WHERE accountID = '$id'");
-		    if($result->num_rows>0){
+		if($row = $result->fetch_assoc()) {
+            $isMod = $row['isMod'];
+        }
+		    if($result->num_rows>0 && $isMod==0){
         		$db_query = "DELETE FROM utilizatori WHERE id = '$id' LIMIT 1";
         		mysqli_query($connection, $db_query);
         		if($resultAvatar->num_rows>0){
