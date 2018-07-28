@@ -158,7 +158,7 @@ else {
                if ($s_medic == 1 && $relation == true) {
                     echo '<span style="font-size:13px; color: #17A2B8">INFO: Acesta este unul dintre pacienții dumneavoastră!</span>';}
                else if ($s_medic == 0 && $relation == true) {
-                    echo '<span style="font-size:13px; color: #17A2B8">INFO: Acest doctor te are in lista sa ca și pacient!</span>';
+                    echo '<span style="font-size:13px; color: #8870c9">INFO: Acest doctor te are in lista sa ca și pacient!</span>';
                }
                ?>
             </div>
@@ -194,7 +194,7 @@ else {
                         <div class="card-block">
                             <?php echo'<h5 class="text-center">' .$utilizator;echo'</h5>' ?>
                         <?php
-                         if($s_medic==1 && $medic!=1){
+                        if(($s_medic==1 && $medic!=1) || ($s_isMod == 1 && $isMod == 0)){
                             echo'<h6 class="text-center"><a href="" data-toggle="modal" data-target="#stergecont" style="color:red; font-size:13px">Sterge contul &nbsp;<i class="fa fa-trash"></i></a></h6>';
                             $_SESSION['whichAccount_Delete'] = $_GET['id'];
                         }
