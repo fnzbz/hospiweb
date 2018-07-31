@@ -1,0 +1,753 @@
+body {
+  font-family:Poppins, sans-serif;
+  position:relative;
+  background-color:#f2f3f8;
+  background-repeat: repeat;
+}
+
+.logo .navbar-brand {
+  background-image:url("../../assets/img/logomini.svg");
+  background-position:left;
+  background-size:contain;
+  background-repeat:no-repeat;
+}
+
+@media (max-width: 992px) {
+  .centered {
+    text-align:center;
+  }
+}
+
+#navcol-1 {
+  font-size:14px;
+}
+
+.avatar {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.avatar + label {
+    max-width: 80%;
+    font-size: 1rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 0.5rem 0.8rem;
+}
+
+.no-js .avatar + label {
+    display: none;
+}
+
+.avatar:focus + label,
+.avatar.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.avatar + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    /* 4px */
+    margin-right: 0.25em;
+    /* 4px */
+}
+
+
+/* style 1 */
+
+.avatar-button + label {
+    color: #fff;
+    background-color: #17A2B8;
+}
+
+.avatar-button:focus + label,
+.avatar-button.has-focus + label,
+.avatar-button + label:hover {
+    background-color: #138496;
+}
+
+.profile-overlay {
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  height:100%;
+  width:100%;
+  opacity:0;
+  transition:.4s ease;
+  background-color:rgba(255,255,255,0.4);
+}
+
+.poza-profil:hover .profile-overlay {
+  opacity:1;
+}
+
+.change-icon {
+  position:absolute;
+  color:rgba(88,88,88,.95);
+  font-size:60px;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  -ms-transform:translate(-50%, -50%);
+  text-align:center;
+}
+
+.change-icon:hover {
+    color: #17A2B8;
+}
+
+
+.sticky {
+  position:sticky;
+  top:0px;
+  z-index:2;
+}
+
+
+.notification {
+    font-size:13px;
+}
+
+.alert-danger {
+    color: #fff;
+    background-color: #dd4b39;
+    border-color: #d73925;
+    font-size: 13px;
+}
+
+.alert-success {
+    color: #fff;
+    background-color: #00a65a;
+    border-color: #008d4c;
+    font-size: 13px;
+}
+
+.ball {
+    border-radius: 50%;
+    background-color: #17a2b8; 
+}
+
+.content {
+  display:flex;
+}
+
+.margin-search {
+    margin-top: 8px;
+}
+
+.card {
+  margin-bottom:30px;
+  border:0;
+  border-radius:0;
+  -webkit-box-shadow:0 1px 15px 1px rgba(113,106,202,.08);
+  -moz-box-shadow:0 1px 15px 1px rgba(113,106,202,.08);
+  box-shadow:0 1px 15px 1px rgba(113,106,202,.08);
+  word-wrap:normal;
+}
+
+.login-form {
+  max-width:420px;
+  margin:30px auto;
+}
+
+.card-header {
+  background-color:#fff;
+  padding:20px 30px;
+  border-bottom:1px solid #ebedf2;
+}
+
+.table-striped-profile tbody tr:nth-of-type(2n+1) {
+  background-color: rgba(23, 162, 184, 0.05);
+}
+
+.table-striped-transplanturi tbody tr:nth-of-type(2n+1) {
+  background-color: rgba(165, 20, 20, 0.05);
+}
+
+.card-title {
+  text-align:center;
+  font-weight:400;
+  margin:0;
+  font-size:16px;
+}
+
+.listapacienti a {
+    color: #fff;
+}
+
+.listapacienti a:hover {
+    color: #fff;
+}
+
+.card-body {
+  background-color:#fff;
+  padding:25px 30px;
+  color:#575962;
+  font-size:13px;
+}
+
+.form-control:focus {
+  color:#495057;
+  background-color:#fff;
+  border-color:#80bdff;
+  outline:0;
+  box-shadow:0 0 0 .0rem rgba(0,123,255,.25);
+}
+
+a:hover {
+  color:#17a2b8;
+  text-decoration:underline;
+}
+
+a {
+  color:#17a2b8;
+}
+
+.form-actions {
+  text-align:center;
+}
+
+
+#continut {
+  padding-bottom:30px;
+  min-height:100%;
+}
+
+.numeMyDoctor a {
+    color: #8870c9;
+}
+
+.numeMyDoctor a:hover {
+    color: #8870c9;
+}
+
+
+.margine {
+  padding-top:70px;
+  padding-bottom:100px;
+}
+
+
+.section-separator{
+    padding-bottom:100px;
+    padding-top:100px;
+}
+
+.login-separator{
+    padding-bottom:255px;
+    padding-top:255px;
+}
+
+.ticket-create textarea {
+  resize:none;
+  height:200px;
+  font-size: 13px;
+}
+
+.sectiune {
+  margin-bottom:10px;
+}
+
+.intrebari {
+  margin:0;
+}
+
+.comentariu-header {
+  color:#555;
+}
+
+.comentariu {
+  padding:10px;
+  background-color:rgba(23,162,184,0.02);
+  border-radius:5px;
+  margin-bottom:10px;
+  border: 1px solid rgba(23,162,184,0.1);
+}
+
+.comentariu-medic {
+  padding:10px;
+  background-color:rgba(140,1,126,0.02);
+  border-radius:5px;
+  margin-bottom:10px;
+  border: 1px solid rgba(140,1,126,0.1);
+}
+
+.comentariu-medic a {
+    color: #8870c9;
+}
+
+.comentariu-medic a:hover {
+    color: #8870c9;
+}
+
+.card-footer {
+  background-color:#fff;
+  padding:15px 30px;
+  border-top:1px solid #ebedf2;
+  color:#575962;
+}
+
+footer {
+  bottom:0;
+  width:100%;
+  height:100%;
+  background:#223448;
+  color:#fff;
+}
+
+.main-footer {
+  padding-top:40px;
+  padding-bottom:40px;
+}
+
+.main-footer img {
+  width:70px;
+  margin-right:3px;
+}
+
+.avatar-fluid {
+    height: auto; 
+    width: auto; 
+    max-width: 100%; 
+    max-height: 300px;
+}
+
+.footer-links {
+  text-align:center;
+  font-size:13px;
+}
+
+.footer-links a:hover {
+  color:#fff;
+  text-decoration:none;
+}
+
+.footer-links a {
+  display:block;
+  text-decoration:none;
+  color:#fff;
+  padding:2px 0;
+}
+
+.contact-footer {
+  text-align:right;
+}
+
+@media (max-width: 768px) {
+  .contact-footer {
+    text-align:center;
+    margin-top:15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .info {
+    margin-bottom:15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .margine-sus {
+    margin-top:20px;
+  }
+}
+
+
+
+.sub-footer {
+  padding:20px 0;
+  background:#f2f3f8;
+}
+
+.sub-footer p {
+  color:rgba(0,0,0,0.9);
+  margin:0;
+  font-size:13px;
+}
+
+.section-padding{
+    padding-top:80px;
+    padding-bottom:80px;
+}
+  .footer-brand {
+    font-size:20px;
+  }
+
+@media (max-width: 768px) {
+  .footer-brand {
+    text-align:center;
+    margin-bottom:15px;
+  }
+}
+
+#spanError{
+    color: red;
+    font-size:12px;
+    vertical-align:middle;
+    margin-bottom:10px;
+    
+}
+
+.errorMessageTreatment {
+  font-size:12px;
+  color:red;
+}
+
+.errorMessageConsultation {
+  font-size:12px;
+  color:red;    
+}
+
+.errorMessage {
+  font-size:12px;
+  color:red;    
+}
+
+.submitMessage {
+  font-size:12px;
+  color:red;    
+}
+
+#spanSuccess{
+    color: green;
+    font-size:12px;
+    vertical-align:middle;
+    margin-bottom:10px;
+    
+}
+
+
+.confirm-form {
+  margin-bottom:8px;   
+}
+
+.cnp-form {
+    margin-bottom:1rem;
+}
+
+.profile-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile {
+    margin-left: 10px;
+    padding: 4px 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.dropdown-toggle img{
+    position: relative;
+    background: #1faec4;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #0b7788;
+    vertical-align: middle;
+    z-index: 9;
+}
+
+.dropdown-toggle span {
+    position: relative;
+    vertical-align: middle;
+    color: #fff;
+    background: #0b7788;
+    padding: 4px 10px 4px 18px;
+    margin-left: -10px;
+    z-index: 3;
+}
+
+.bunvenit {
+  margin:40px 0;
+}
+
+.alert {
+  text-align:center;
+}
+
+
+.panou-optiuni {
+  font-weight:300;
+}
+
+
+.same-height {
+  height:100%;
+  min-height:200px;
+  margin-bottom:0;
+}
+
+.nav-item {
+}
+
+.poza-profil {
+  margin:0;
+  position:relative;
+  text-align:center;
+}
+
+.card-block {
+  padding:1.25rem;
+}
+
+.label {
+  display:inline;
+  padding:2px 7px;
+  font-size:75%;
+  font-weight:300;
+  line-height:1.1;
+  color:#fff;
+  text-align:center;
+  white-space:nowrap;
+  vertical-align:baseline;
+  margin-right:10px;
+}
+
+.bg-purple {
+  background-color:#9585bf !important;
+}
+
+.bg-turcoaz {
+  background-color:#17a2b8 !important;
+}
+
+.bg-yellow {
+  background-color:#f7a015 !important;
+}
+
+.bg-black {
+  background-color:#000000 !important;
+}
+
+.bg-red {
+  background-color:#c10505 !important;
+}
+
+.header-profil {
+  margin-bottom:20px;
+}
+
+.md-tabs {
+  position:relative;
+  min-height:20px;
+}
+
+.profile-nav-item {
+  background-color:#fff;
+  width:calc(100% / 3);
+  text-align:center;
+  float:left;
+  margin-bottom:-1px;
+  font-size:14px;
+}
+
+.profile-nav-item-doctor {
+  background-color:#fff;
+  width:100%;
+  text-align:center;
+  float:left;
+  margin-bottom:-1px;
+  font-size:14px;
+}
+
+
+
+.card-header-text {
+  margin-bottom:0;
+  font-size:1rem;
+  color:rgba(51, 51, 51, 0.85);
+  text-transform:uppercase;
+  font-weight:300;
+  display:inline-block;
+  vertical-align:middle;
+}
+
+.nav-tabs .nav-link {
+    border-top: 3px solid transparent;
+}
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+  border-top: 3px solid #f7a015;
+  color: #f7a015;
+  border-radius: 0;
+}
+
+.card-header .btn {
+    padding: 0;
+}
+
+.nav-tabs .ball {
+    background-color: #F39C12;
+}
+
+p {
+  font-weight:100;
+}
+
+textarea {
+  width:100%;
+  height:250px;
+  resize:none;
+  font-size: 13px;
+}
+
+.pacienti thead th {
+    background-color: #17A2B8;
+    text-transform: uppercase;
+    vertical-align: middle;
+    display: table-cell;
+    border-bottom: 8px solid #09424b;
+    color: #fff;
+    font-size: 14px;
+    font-weight:normal;
+}
+
+.pacienti tbody td {
+    height: 40px;
+    vertical-align: middle;
+    display: table-cell;
+    font-size: 13px;
+}
+
+.ticket thead th {
+    background-color: #17A2B8;
+    text-transform: uppercase;
+    vertical-align: middle;
+    display: table-cell;
+    border-bottom: 8px solid #09424b;
+    color: #fff;
+    font-size: 14px;
+    font-weight:normal;
+}
+
+.ticket tbody td {
+    height: 40px;
+    vertical-align: middle;
+    display: table-cell;
+    font-size: 13px;
+}
+
+.transplanturi thead th{
+    background-color: #A51414;
+    text-transform: uppercase;
+    vertical-align: middle;
+    display: table-cell;
+    border-bottom: 8px solid #490606;
+    color: #fff;
+    font-size: 14px;
+    font-weight:normal;
+}
+
+.transplanturi tbody td {
+    height: 40px;
+    vertical-align: middle;
+    display: table-cell;
+    font-size: 13px;
+}
+
+.transplanturi tbody td a {
+    color: #A51414;
+}
+
+.transplanturi tbody td a:hover {
+    color: #A51414;
+    text-decoration: underline;
+}
+
+.modal-body p {
+  font-size:13px;
+  margin:0;
+  color:rgba(88, 88, 88, 0.85);
+}
+
+.profile-input {
+  width:100%;
+  padding:5px 8px;
+  box-sizing:border-box;
+  margin-bottom:15px;
+  border:solid 1px #e6eaee;
+  font-size:14px;
+  border-radius:5px;
+  background:transparent;
+  box-shadow:none;
+  color:#575962;
+  font-size:13px;
+}
+
+.labela {
+  color:#17a2b8;
+}
+
+.simptome , .diagnostic, .listapacienti {
+    margin: 0;
+}
+
+.diagnostic thead tr th {
+  background:#2294c8;
+  color:#fff;
+  text-transform:uppercase;
+  border:0;
+}
+
+.listapacienti thead tr th {
+  background:#7a69a6;
+  color:#fff;
+  text-transform:uppercase;
+  border:0;
+}
+
+.simptome thead tr th {
+  background:#11a062;
+  color:#fff;
+  text-transform:uppercase;
+  border:0;
+}
+
+.diagnostic tbody tr td {
+  background:#27a9e3;
+  color:#fff;
+  border:0;
+}
+
+.simptome tbody tr td {
+  background:#28b779;
+  color:#fff;
+  border:0;
+}
+
+.listapacienti tbody tr td {
+  background:#9585bf;
+  color:#fff;
+  border:0;
+  border-bottom: 1px solid #7a69a6;
+}
+
+.simptome .btn {
+ padding: 0;   
+}
+
+.diagnostic .btn {
+ padding: 0;
+}
+
+.listapacienti .btn {
+ padding: 0;
+}
+
+
