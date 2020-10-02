@@ -57,29 +57,23 @@ if (isset($_SESSION['CNP'])){
                 </div>
                 <div class="text-center">
                      <?php
-                    if (isset($_GET['eroare']) && $_GET['eroare'] == '1'){
-                       echo '<div class="card-footer submitMessage"><div class="errorMessage"></div><hr><span>Eroare de submisie! CNP-ul introdus exista deja in baza de date!</span></div>';
-                   } else if (isset($_GET['eroare']) && $_GET['eroare'] == '2'){
-                       echo '<div class="card-footer submitMessage"><div class="errorMessage"></div><hr><span>Eroare de submisie! Parolele introduse nu coincid!</span></div>';
-                   } else if (isset($_GET['eroare']) && $_GET['eroare'] == '3'){
-                       echo '<div class="card-footer submitMessage"><div class="errorMessage"></div><hr><span>Eroare de submisie! Trebuie sa fii de acord cu termenii si conditile!</span></div>';
-                   } else if (isset($_GET['eroare']) && $_GET['eroare'] == '4'){
-                       echo '<div class="card-footer submitMessage"><div class="errorMessage"></div><hr><span>Eroare de submisie! Adresa de mail este invalida!</span></div>';
-                   } else if (isset($_GET['eroare']) && $_GET['eroare'] == '5'){
-                       echo '<div class="card-footer submitMessage"><div class="errorMessage"></div><hr><span>Eroare de submisie! CNP-ul introdus nu este valid!</span></div>';
-                   } else if (isset($_GET['eroare']) && $_GET['eroare'] == '6'){
-                       echo '<div class="card-footer submitMessage"><div class="errorMessage"></div><hr><span>Eroare de submisie! Numele introdus este invalid!</span></div>';
-                   }
-                     else if (isset($_GET['eroare']) && $_GET['eroare'] == '7'){
-                       echo '<div class="card-footer submitMessage"><div class="errorMessage"></div><hr><span>Eroare de submisie! Numarul de telefon introdus este invalid!</span></div>';
-                   }
-                     else if (isset($_GET['eroare']) && $_GET['eroare'] == '8'){
-                       echo '<div class="card-footer submitMessage"><div class="errorMessage"></div><hr><span>Eroare de submisie! Parola introdusa nu inteplineste toate criteriile!</span></div>';
-                   }
-                     else {
-                        echo '<div class="card-footer submitMessage"><span class="text-center mb-0" style="color:#575962">Ai deja un cont? Atunci autentifică-te <a href="/login">aici</a>!</span><div class="errorMessage"></div>';
-                   }
-                    ?>
+                    
+                    $errors = [
+                        '1' => 'CNP-ul introdus exista deja in baza de date!',
+                        '2' => 'Parolele introduse nu coincid!',
+                        '3' => 'Trebuie sa fii de acord cu termenii si conditile!',
+                        '4' => 'Adresa de mail este invalida!',
+                        '5' => 'CNP-ul introdus nu este valid!',
+                        '6' => 'Numele introdus este invalid!',
+                        '7' => 'Numarul de telefon introdus este invalid!',
+                        '8' => 'Parola introdusa nu inteplineste toate criteriile!',
+                    ];
+                    
+                    if (isset($_GET['eroare']) && in_array($_GET['eroare'], array_keys($errors))) { ?>
+                       <div class="card-footer submitMessage"><div class="errorMessage"></div><hr><span>Eroare de submisie! <?= $errors[$_GET['eroare']]; ?></span></div>
+                   <?php } else { ?>
+                       <div class="card-footer submitMessage"><span class="text-center mb-0" style="color:#575962">Ai deja un cont? Atunci autentifică-te <a href="/login">aici</a>!</span><div class="errorMessage"></div>
+                   <?php } ?>
                 </div>
             </div>
         </div>
